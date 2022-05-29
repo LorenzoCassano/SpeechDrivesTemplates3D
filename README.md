@@ -38,7 +38,7 @@ It's necessary to run the scripts in the following order:
 ## Execute Model
 To run the model, we suggest to use "Execute.ypnb" file in [Google Colab](https://colab.research.google.com).<br>
 To run the code in local, you need to install on your device [Cuda](https://developer.nvidia.com/cuda-toolkit).<br>
-You also need to create dataset and output directory and set it in the configuration files (<code>voice2pose_sdt_bp.yaml</code>).<br>
+You also need to create dataset and output directory and set it in the configuration files (<code>voice2pose_sdt_bp.yaml, default.py</code>).<br>
 
 ### Training
 <code>python main.py --config_file configs/voice2pose_sdt_bp.yaml \
