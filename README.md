@@ -27,17 +27,20 @@ We created a small 3D dataset based on an university teacher, but it would be be
 To build a 3D dataset, we provide scripts in <code>Preprocessing3D</code>.<br>
 It's necessary to run the scripts in the following order:
 <ul>
-<li> <code>1_1_change_fps.py</code>, it needs 2 arguments: videos directory and target directory where fps videos will be saved.
-<li> <code> 1_2_video2frames.py</code> it needs 2 arguments: fps videos directory and directory where the frames will be saved (we suggest to use the same name of path in the code).
-<li><code> preprocessing.py</code>, it creates the keypoints.
+<li> <code>1_1_change_fps.py</code>, it needs 2 arguments: videos directory and target directory where videos in 15FPS will be saved.
+<li> <code> 1_2_video2frames.py</code> it needs 2 arguments: fps videos directory and directory where the frames will be saved (we suggest using the same path specified in the code).
+<li><code> preprocessing.py</code>, it generates the keypoints.
 <li><code> fixing.py</code>, it fixes the keypoints.
+<li><code> 3_1_generate_clips </code> it generates the NPZ files
 <li><code>3_2_split_train_val_test.py</code>, it creates a csv file.
-<li><code>4_1_calculate_mean_std.py</code>, it calculates the mean and std of each keypoint.<br> After that, to insert the mean and std in speaker_stat.py
+<li><code>4_1_calculate_mean_std.py</code>, it calculates the mean and std for each keypoint.<br>
+<br>
+After that, insert the mean and std in speaker_stat.py
 </ul>
 
 ## Execute Model
-To run the model, we suggest to use "Execute.ypnb" file in [Google Colab](https://colab.research.google.com).<br>
-To run the code in local, you need to install on your device [Cuda](https://developer.nvidia.com/cuda-toolkit).<br>
+To run the model, we suggest using "Execute.ypnb" file in [Google Colab](https://colab.research.google.com).<br>
+To run the code on your local machine, you need to install on your device [Cuda](https://developer.nvidia.com/cuda-toolkit).<br>
 You also need to create dataset and output directory and set it in the configuration files (<code>voice2pose_sdt_bp.yaml, default.py</code>).<br>
 
 ### Training
