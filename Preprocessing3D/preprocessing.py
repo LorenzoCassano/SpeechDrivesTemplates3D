@@ -2,10 +2,12 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import os
+import sys
 
 mp_pose = mp.solutions.pose
 mp_hands = mp.solutions.hands
 mp_face_mesh = mp.solutions.face_mesh
+
 
 def rename():
     """
@@ -41,7 +43,7 @@ def array_trasformation(l,default = 0):
     ou = np.array([new_list])
     return ou
 
-def saving(pose_key,face_key,hand_left,right_hand,fold,file_name):
+def saving(pose_key,face_key,hand_left,right_hand,fold,file_name,DIR_OUT_PATH):
     """
     Save the keypoints in a npy file
     """
@@ -54,13 +56,13 @@ def saving(pose_key,face_key,hand_left,right_hand,fold,file_name):
 
 
         file = file_name.removesuffix('.jpg')
-        print("Saving ",'./output/' + fold + '/' + file)
-        np.save('./output/' + fold + '/' + file, npy)
+        print("Saving ",'./' + DIR_OUT_PATH + fold + '/' + file)
+        np.save('./' + DIR_OUT_PATH + fold + '/' + file, npy)
 
 
-def key_points(fold):
+def key_points(fold,DIR_FRAMES_PATH,DIR_OUT_PATH):
     j = 0
-    folder = os.listdir('frames/' + fold)
+    folder = os.listdir(DIR_FRAMES_PATH + fold)
     #skipping = open("./Skipping/Skipping_" + fold +'.txt',"w")
     for file in folder:
             #print("File =",file)
@@ -69,7 +71,7 @@ def key_points(fold):
             hand_left_keypoints = []
             hand_right_keypoints = []
 
-            image = cv2.imread('frames/' + fold + '/' + file)
+            image = cv2.imread(DIR_FRAMES_PATH + fold + '/' + file)
 
             # Predictions for body
             with mp_pose.Pose(static_image_mode=True, model_complexity=2, enable_segmentation=True,
@@ -124,7 +126,7 @@ def key_points(fold):
                 face = array_trasformation(face_keypoints,1)
                 hand_left = array_trasformation(hand_left_keypoints,1)
                 hand_right = array_trasformation(hand_right_keypoints,1)
-                saving(pose,face,hand_left,hand_right,fold,file)
+                saving(pose,face,hand_left,hand_right,fold,file,DIR_OUT_PATH)
 
                 pose_keypoints.clear()
                 hand_right_keypoints.clear()
@@ -139,16 +141,26 @@ def key_points(fold):
     print("Saved ",j,"/",len(folder))
 
 def main():
-    folders = os.listdir('frames/')
+    if len(sys.argv) > 1:
+        frames_path = sys.argv[1]
+        out_path = sys.argv[2]
+    else:
+        frames_path = 'frames/'
+        out_path = 'output/'
+
+    print("Frames path = ",frames_path)
+    print("Output path = ",out_path)
+
+    folders = os.listdir(frames_path)
     for folder in folders:
-        dest = 'output/' + folder
+        dest = out_path + folder
         print("Starting folder ",folder)
 
         # create folders if needed
         if not os.path.isdir(dest):
             os.mkdir(dest)
             print("\tCreated dir " + dest)
-        key_points(folder)
+        key_points(folder,frames_path,out_path)
 
 
 
