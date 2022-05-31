@@ -29,8 +29,8 @@ It's necessary to run the scripts in the following order:
 <ul>
 <li> <code>1_1_change_fps.py</code>, it needs 2 arguments: videos directory and target directory where videos in 15FPS will be saved.
 <li> <code> 1_2_video2frames.py</code> it needs 2 arguments: fps videos directory and directory where the frames will be saved (we suggest using the same path specified in the code).
-<li><code> preprocessing.py</code>, it generates the keypoints.
-<li><code> fixing.py</code>, it fixes the keypoints.
+<li><code> preprocessing.py</code>, it needs 2 arguments: dir frames path and output path.
+<li><code> fixing.py</code>, it fixes needs one argument: output path.
 <li><code> 3_1_generate_clips </code> it generates the NPZ files
 <li><code>3_2_split_train_val_test.py</code>, it creates a csv file.
 <li><code>4_1_calculate_mean_std.py</code>, it calculates the mean and std for each keypoint.<br>
