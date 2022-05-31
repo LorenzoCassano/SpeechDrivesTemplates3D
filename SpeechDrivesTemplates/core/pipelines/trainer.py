@@ -385,7 +385,7 @@ class Trainer(object):
                 self.train_sampler.set_epoch(epoch)
             for t_step, batch in enumerate(self.train_dataloader):
                 global_step += 1
-                print("TRAIN STEP...")
+                #print("TRAIN STEP...")
                 self.train_step(batch, t_step+1, global_step, epoch)
 
             if epoch % cfg.TRAIN.CHECKPOINT_INTERVAL == 0:
