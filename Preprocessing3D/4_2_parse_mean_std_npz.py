@@ -168,7 +168,7 @@ def vis_mean_pose(mean):
 if __name__ == "__main__":
     #print(list(range(24,33)))
     #assert len(sys.argv) == 2
-    npz_path = 'mean_std-parted.npz'
+    npz_path = sys.argv[1] #'mean_std-parted.npz'
     #assert os.path.exists(npz_path)
 
     mean, std = parsing_npz_137_mean_std(npz_path)
