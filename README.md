@@ -33,7 +33,8 @@ It's necessary to run the scripts in the following order:
 <li><code> fixing.py</code>, it needs one argument: output path.
 <li><code> 3_1_generate_clips </code> it generates the NPZ files
 <li><code>3_2_split_train_val_test.py</code>, it creates a csv file.
-<li><code>4_1_calculate_mean_std.py</code>, it calculates the mean and std for each keypoint.<br>
+<li><code>4_1_calculate_mean_std.py</code>, it calculates the mean and std for each keypoint.
+<li><code>4_2_parse_mean_std.py</code>, it reshapes the mean and std.<br> 
 <br>
 After that, insert the mean and std in speaker_stat.py
 </ul>
