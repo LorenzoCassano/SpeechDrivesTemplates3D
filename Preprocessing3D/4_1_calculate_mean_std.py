@@ -79,7 +79,22 @@ def cal_mean_parted(tuple_in):
     np_avg = np.zeros((64, 3, 542))
     for i_pose_fn in tqdm.tqdm(df_pose, desc="m # {}: ".format(idx), position=idx):
         pose_np = np.load(i_pose_fn)["pose"]
+        print("POSE NP = ",pose_np.shape)
+
+        # Recalculating keypoints
+        """
+        for i in range(0,64):
+              print("i vale ",i)
+              for j in (0,542):
+                print("j vale ",j)
+                print("POSES = ",pose_np[i,0,j])
+                pose_np[i,0,j] = pose_np[i,0,j] * 640
+                pose_np[i,1,j] = pose_np[i,1,j] * 350
+        """
+        pose_np[:,0,:] = pose_np[:,0,:] * 640
+        pose_np[:,1,:] = pose_np[:,1,:] * 350
         for i in range(64):
+
             pose_np, save_pose_root = pose_np_deduct_root(pose_np, i)
             for i_kpt in range(542):
 
@@ -100,6 +115,17 @@ def cal_std_parted(tuple_in):
     np_var = np.zeros((64, 3, 542))
     for i_pose_fn in tqdm.tqdm(df_pose, desc="v # {}: ".format(idx), position=idx):
         pose_np = np.load(i_pose_fn)["pose"]
+
+        # Recalculating keypoints
+        """
+        for i in range(0,64):
+              for j in (0,542):
+                pose_np[i,0,j] = pose_np[i,0,j] * 640
+                pose_np[i,1,j] = pose_np[i,1,j] * 350
+        """
+        pose_np[:,0,:] = pose_np[:,0,:] * 640
+        pose_np[:,1,:] = pose_np[:,1,:] * 350
+
         for i in range(64):
             pose_np, save_pose_root = pose_np_deduct_root(pose_np, i)
             for i_kpt in range(542):
@@ -191,6 +217,9 @@ def cal_mean_std():
     df = pd.read_csv(os.path.join(file_nm))
     df_train = df[df["dataset"] == "train"]
     df_pose = df_train["pose_fn"]
+
+
+
     num_thread = args.num_processes
     stride = len(df_pose) // num_thread
     if args.debug:

@@ -94,7 +94,7 @@ def draw_body_parts(img, landmarks, size=2, with_confidence_score=False):
         [ [16,22],[16,20],[16,18],[18,20]]
     ]
     face_edges = [
-          [10,9],[8,6],[6,5],[5,4],[4,0],[2,3],[3,7]
+          [10,9] #,[8,6],[6,5],[5,4],[4,0],[2,3],[3,7]
         ]
     #print('face = ',face)
     #print('pose = ',pose)
@@ -214,13 +214,15 @@ def vis_relative_pose_pair(relative_pose_pred, relative_pose_gt, canvas_size):
     img = np.zeros([height, width, 3]).astype(np.uint8) + 255
     #translated_pose_pred = translate_landmarks(relative_pose_pred.transpose(1, 0), int(width*0.33), height//2)
     #translated_pose_gt = translate_landmarks(relative_pose_gt.transpose(1, 0), int(width*0.67), height//2)
-    relative_pose_pred[0] = relative_pose_pred[0] * width
-    relative_pose_pred[1] = (relative_pose_pred[1] * height) - 100
+    #print("PRIMA ",relative_pose_pred[0])
+    relative_pose_pred[0] = (relative_pose_pred[0] *width)
+    #print("DOPo ",relative_pose_pred[0])
+    relative_pose_pred[1] = (relative_pose_pred[1] * height) 
     #print('relative pose pred vale = ',relative_pose_pred )
-    translated_pose_pred = translate_landmarks(relative_pose_pred.transpose(1, 0), int(width*0.33), height//2)
-    translated_pose_gt = translate_landmarks(relative_pose_gt.transpose(1, 0), int(width*0.67), height//2)
-    img = draw_body_parts(img, translated_pose_pred)
-    img = draw_body_parts(img, translated_pose_gt)
+    #translated_pose_pred = translate_landmarks(relative_pose_pred.transpose(1, 0), int(width*0.33), height//2)
+    #translated_pose_gt = translate_landmarks(relative_pose_gt.transpose(1, 0), int(width*0.67), height//2)
+    img = draw_body_parts(img, relative_pose_pred.transpose(1, 0))
+    img = draw_body_parts(img, relative_pose_gt.transpose(1, 0))
     return img
 
 def vis_relative_pose_pair_clip(relative_poses_pred, relative_poses_gt, canvas_size):

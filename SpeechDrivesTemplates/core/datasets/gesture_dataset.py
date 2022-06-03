@@ -96,6 +96,10 @@ class GestureDataset(Dataset):
             poses_with_score = torch.Tensor(arr['pose'][:self.cfg.NUM_FRAMES, ...])
             
             poses_with_score = self.remove_unuesd_kp(poses_with_score)
+
+            poses_with_score[:,0,:] = poses_with_score[:,0,:] * 640
+            poses_with_score[:,1,:] = poses_with_score[:,1,:] * 350
+
             #relative_poses_with_score = self.absolute_to_relative(poses_with_score)
             #if self.cfg.HIERARCHICAL_POSE:
              #   relative_poses_with_score = self.global_to_parted(poses_with_score)
