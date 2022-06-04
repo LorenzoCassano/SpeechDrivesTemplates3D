@@ -21,7 +21,9 @@ The file changed in SpeechDrivesTeamplates are:
 </ul>
 
 ## Dataset
-We created a small 3D dataset based on an university teacher, but it would be better creating a grater dataset to have a better model, you can use the speakers of [Speech2Gesture](https://people.eecs.berkeley.edu/~shiry/projects/speech2gesture/index.html).
+We created a small 3D dataset based on an university teacher, but it would be better creating a grater dataset to have a better model, you can use the speakers of [Speech2Gesture](https://people.eecs.berkeley.edu/~shiry/projects/speech2gesture/index.html). <br>
+You can use our preprocessed dataset from this [link](https://drive.google.com/drive/folders/1QGs398wcJuiM15qd70pKEHDITBJc_k_x?usp=sharing). <br>
+You can find the results from this [link](https://drive.google.com/drive/folders/1fBGotYrbqHBczILNzcqMYYro-baZUb2J?usp=sharing). <br>
 
 ## Execute Preprocessing3D
 To build a 3D dataset, we provide scripts in <code>Preprocessing3D</code>.<br>
