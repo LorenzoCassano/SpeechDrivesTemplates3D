@@ -41,7 +41,7 @@ After that, insert the mean and std in speaker_stat.py
 
 ## Execute Model
 To run the model, we suggest using "Execute.ypnb" file in [Google Colab](https://colab.research.google.com).<br>
-We suggest to run in local the files:<code> preprocessing.py</code> and <code>fixing.py</code>, you could find problems relative to python version in Google colab. <br>
+We suggest running in local the files:<code> preprocessing.py</code> and <code>fixing.py</code>, you could find problems relative to python version in Google colab. <br>
 To run the code on your local machine, you need to install on your device [Cuda](https://developer.nvidia.com/cuda-toolkit).<br>
 You also need to create dataset and output directory and set it in the configuration files (<code>voice2pose_sdt_bp.yaml, default.py</code>).<br>
 
