@@ -34,14 +34,14 @@ It's necessary to run the scripts in the following order:
 <li><code> 3_1_generate_clips </code> it generates the NPZ files
 <li><code>3_2_split_train_val_test.py</code>, it creates a csv file.
 <li><code>4_1_calculate_mean_std.py</code>, it calculates the mean and std for each keypoint.
-<li><code>4_2_parse_mean_std.py</code>, it reshapes the mean and std.<br> 
+<li><code>4_2_parse_mean_std_npz.py</code>, it reshapes the mean and std.<br> 
 <br>
 After that, insert the mean and std in speaker_stat.py
 </ul>
 
 ## Execute Model
 To run the model, we suggest using "Execute.ypnb" file in [Google Colab](https://colab.research.google.com).<br>
-We suggest running in local the files:<code> preprocessing.py</code> and <code>fixing.py</code>, you could find problems relative to python version in Google colab. <br>
+We suggest running in local the files:<code>preprocessing.py</code> and <code>fixing.py</code>, you could find problems relative to python version in Google colab. <br>
 To run the code on your local machine, you need to install on your device [Cuda](https://developer.nvidia.com/cuda-toolkit).<br>
 You also need to create dataset and output directory and set it in the configuration files (<code>voice2pose_sdt_bp.yaml, default.py</code>).<br>
 
