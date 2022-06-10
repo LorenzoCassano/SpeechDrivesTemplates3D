@@ -36,7 +36,7 @@ It's necessary to run the scripts in the following order:
 <li><code> 3_1_generate_clips </code> it generates the NPZ files
 <li><code>3_2_split_train_val_test.py</code>, it creates a csv file.
 <li><code>4_1_calculate_mean_std.py</code>, it calculates the mean and std for each keypoint.
-<li><code>4_2_parse_mean_std_npz.py</code>, it reshapes the mean and std.<br> 
+<li><code>4_2_parse_mean_std_npz.py</code>, it reshapes the mean and std.<br>
 <br>
 After that, insert the mean and std in speaker_stat.py
 </ul>
@@ -53,3 +53,9 @@ You also need to create dataset and output directory and set it in the configura
     DATASET.SPEAKER speaker_name \
     SYS.NUM_WORKERS 32
 </code>
+
+## Authors
+<ul>
+<li> Lorenzo Cassano (mat.718331)
+<li> Jacopo D'Abramo (mat. 716484)
+</ul>
